@@ -7,15 +7,15 @@ const localStorageKey = 'feedback-form-state';
 const input = feedbackForm.elements.email;
 const textarea = feedbackForm.elements.message;
 
-const savedState = localStorage.getItem(localStorageKey);
+const savedInformation = localStorage.getItem(localStorageKey);
 
-if (savedState ?? false) {
+if (savedInformation ?? false) {
   try {
-    const parsedState = JSON.parse(savedState);
+    const parsedInformation = JSON.parse(savedInformation);
 
-    if (parsedState.email !== undefined && parsedState.message !== undefined) {
-      input.value = parsedState.email;
-      textarea.value = parsedState.message;
+    if (parsedInformation.email !== undefined && parsedInformation.message !== undefined) {
+      input.value = parsedInformation.email;
+      textarea.value = parsedInformation.message;
     }
   } catch (error) {
     console.log(error.name);
@@ -28,7 +28,6 @@ feedbackForm.addEventListener('input', () => {
     email: input.value.trim(),
     message: textarea.value.trim(),
   };
-
   localStorage.setItem(localStorageKey, JSON.stringify(feedback));
 });
 
@@ -36,7 +35,7 @@ feedbackForm.addEventListener('submit', e => {
   e.preventDefault();
 
   if (input.value.trim() === '' || textarea.value.trim() === '') {
-    alert('You need to write a message!');
+    alert('Please enter message correctly');
     return;
   }
 
@@ -47,3 +46,4 @@ feedbackForm.addEventListener('submit', e => {
   });
   feedbackForm.reset();
 });
+

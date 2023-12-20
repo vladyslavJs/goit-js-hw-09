@@ -91,5 +91,4 @@ gallery.innerHTML = images.reduce(
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
-  className: 'gallery-container',
 });

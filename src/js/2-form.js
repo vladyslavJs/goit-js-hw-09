@@ -9,11 +9,11 @@ const textarea = feedbackForm.elements.message;
 
 const savedInformation = localStorage.getItem(localStorageKey);
 
-if (savedInformation ?? false) {
+if (savedInformation) {
   try {
     const parsedInformation = JSON.parse(savedInformation);
 
-    if (parsedInformation.email !== undefined && parsedInformation.message !== undefined) {
+    if (parsedInformation.email && parsedInformation.message) {
       input.value = parsedInformation.email;
       textarea.value = parsedInformation.message;
     }
